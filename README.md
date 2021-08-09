@@ -1,4 +1,4 @@
-<h1>Basic Commands: </h1>
+<h1>Basic Commands</h1>
 
 **docker pull**: Get the indicated image from the DockerHub.<br>
 
@@ -23,3 +23,29 @@
 **docker stop containerId**: Stops the given container.<br>
 
 **docker run -d containerId**: (_-d_ is for detach), run the given container in the background.<br>
+
+<hr>
+<br>
+<h1>Building Images</h1>
+
+    FROM **base image: image from where we're going to build our image**
+
+    WORKDIR /app **where we are going to store the commands of our container**
+
+    COPY . . **copy all the files of the actual directory to the container dir (/app)**
+
+    RUN **compile, build, or whatever the app does**
+
+    CMD ["command", "argument"] **command that is going to run when we start this container**
+
+**docker build .**: Build the container given a Dockerfile, it returns the numeric ID created for that container.<br>
+
+**docker build -t my-own-name**: Build the container with a giving tag, we can use this tag as an cointainerID equivalent.<br>
+
+**docker run -dp 3000:3000 my-container-name**: Run the container using detach and port, exposing the port 3000 (the first one) of the Docker system to the port 3000 (the second one) of the host (our machine).<br>
+
+**docker login**: Connect to Docker Hub.<br>
+
+**docker tag old-name cristofernava/new-name:v2**: Change the old tag (container name) for the new one indicated.<br>
+
+**docker push cristofernava/new-name:v2**: Upload the image to our profile in Docker Hub.<br>
