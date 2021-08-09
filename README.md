@@ -28,15 +28,15 @@
 <br>
 <h1>Building Images</h1>
 
-    FROM **base image: image from where we're going to build our image**
+    FROM *base image: image from where we're going to build our image*
 
-    WORKDIR /app **where we are going to store the commands of our container**
+    WORKDIR /app *where we are going to store the commands of our container*
 
-    COPY . . **copy all the files of the actual directory to the container dir (/app)**
+    COPY . . *copy all the files of the actual directory to the container dir (/app)*
 
-    RUN **compile, build, or whatever the app does**
+    RUN *compile, build, or whatever the app does*
 
-    CMD ["command", "argument"] **command that is going to run when we start this container**
+    CMD ["command", "argument"] *command that is going to run when we start this container*
 
 **docker build .**: Build the container given a Dockerfile, it returns the numeric ID created for that container.<br>
 
@@ -49,3 +49,12 @@
 **docker tag old-name cristofernava/new-name:v2**: Change the old tag (container name) for the new one indicated.<br>
 
 **docker push cristofernava/new-name:v2**: Upload the image to our profile in Docker Hub.<br>
+
+<hr>
+<br>
+<h1>Docker Compose</h1>
+Compose is a tool for defining and runnig multi-container Docker applications. With Compose, you use a YAML file to configure your application's services.<br>
+
+**vim docker-compose.yaml**: Create a new Docker compose file.<br>
+
+**docker-compose up -d**: _up_ up the services in the the .yaml file.
