@@ -2,7 +2,9 @@
 
 **docker pull**: Get the indicated image from the DockerHub.<br>
 
-**docker run containerName**: Execute the image that contains all the info for the container and with that run the container.<br>
+**docker run imageId**: Create and start a container based on the provided image id or tag<br>
+
+**docker run -it imageId cmd**: Create and start a container, but also override the default command.<br>
 
 **docker images**: List all the images we have installed in our system.<br>
 
@@ -17,6 +19,8 @@
 **docker logs containerId**: Show the logs of the given container at the current moment and then return the control.<br>
 
 **docker logs -f containerId** Same as _docker logs_ but it stays listening.<br>
+
+**docker exect -it imageId command**: Execute the given command in a running container<br>
 
 **docker exec -it containerId sh**: _exect_ executes a command in a container that is currently running, the _-it_ is for interactive terminal and _sh_ is for shell.<br>
 
@@ -40,7 +44,7 @@
 
 **docker build .**: Build the container given a Dockerfile, it returns the numeric ID created for that container.<br>
 
-**docker build -t my-own-name .**: Build the container with a giving tag, we can use this tag as an cointainerID equivalent.<br>
+**docker build -t my-own-name .**: Build an image based on the Dockerfile in the current directory and add a tag to it.<br>
 
 **docker run -dp 3000:3000 my-container-name**: Run the container using detach and port, exposing the port 3000 (the first one) of the Docker system to the port 3000 (the second one) of the host (our machine).<br>
 
