@@ -40,7 +40,7 @@
 
 **docker build .**: Build the container given a Dockerfile, it returns the numeric ID created for that container.<br>
 
-**docker build -t my-own-name**: Build the container with a giving tag, we can use this tag as an cointainerID equivalent.<br>
+**docker build -t my-own-name .**: Build the container with a giving tag, we can use this tag as an cointainerID equivalent.<br>
 
 **docker run -dp 3000:3000 my-container-name**: Run the container using detach and port, exposing the port 3000 (the first one) of the Docker system to the port 3000 (the second one) of the host (our machine).<br>
 
