@@ -2,9 +2,7 @@
 
 **docker pull**: Get the indicated image from the DockerHub.<br>
 
-**docker run imageId**: Create and start a container based on the provided image id or tag<br>
-
-**docker run -it imageId cmd**: Create and start a container, but also override the default command.<br>
+**docker run containerName**: Execute the image that contains all the info for the container and with that run the container.<br>
 
 **docker images**: List all the images we have installed in our system.<br>
 
@@ -19,8 +17,6 @@
 **docker logs containerId**: Show the logs of the given container at the current moment and then return the control.<br>
 
 **docker logs -f containerId** Same as _docker logs_ but it stays listening.<br>
-
-**docker exect -it imageId command**: Execute the given command in a running container<br>
 
 **docker exec -it containerId sh**: _exect_ executes a command in a container that is currently running, the _-it_ is for interactive terminal and _sh_ is for shell.<br>
 
@@ -44,7 +40,7 @@
 
 **docker build .**: Build the container given a Dockerfile, it returns the numeric ID created for that container.<br>
 
-**docker build -t my-own-name .**: Build an image based on the Dockerfile in the current directory and add a tag to it.<br>
+**docker build -t my-own-name**: Build the container with a giving tag, we can use this tag as an cointainerID equivalent.<br>
 
 **docker run -dp 3000:3000 my-container-name**: Run the container using detach and port, exposing the port 3000 (the first one) of the Docker system to the port 3000 (the second one) of the host (our machine).<br>
 
@@ -62,3 +58,57 @@ Compose is a tool for defining and runnig multi-container Docker applications. W
 **vim docker-compose.yaml**: Create a new Docker compose file.<br>
 
 **docker-compose up -d**: _up_ up the services in the the .yaml file.
+
+<hr>
+<br>
+<h1>Kubernetes Terminology</h1>
+
+**Kubernetes cluster**: A collections of nodes + a master to manage them.<br>
+
+**Node**: A virtual machine that will run our containers.<br>
+
+**Pod**: More or less a running container. Technically, a pod can run multiple containers (we don't do this).<br>
+
+**Deployment**: Monitors a set of pods, make sure they are running and restarts them if they crash.<br>
+
+**Service**: Provides an easy-to-remember URL to access a running container.<br>
+
+<hr>
+<br>
+<h1>Kubernetes Config Files</h1>
+
+- Tells Kubernetes about the different Deployments, Pods, and Services (referred to as 'Objects') that we want to create.<br>
+- Written in YAML syntax.<br>
+- Always store files with your projects source code, they are documentation!<br>
+- We can craete Objects without config files - **DO NOT DO THIS**. Config files provide a precise definition of what your cluster is running.<br>
+- Kubernetes docs will tell you to run direct commands to create objects - only do this for testing purposes.<br>
+- Blog posts will tell you to run direct commands to create objects - close the blog post!<br>
+
+<h2>Basic Commands</h2>
+
+**kubectl get pods**: Print out information about all of the running pods.<br>
+**kubectl exec -it [pod_name] [cmd]**: Execute the given command in a running pod.<br>
+**kubectl logs [pod_name]**: Print out logs from the given pod.<br>
+**kubectl delete pod [pod_name]**: Deletes the given pod.<br>
+**kubectl apply -f [config file name]**: Tells Kubernetes to process the config.<br>
+**kubectl describe pod [pod_name]**: Print out some informatio about the running pod.<br>
+**kubectl get deployments**: List all the running deployments.<br>
+**kubectl describe deployment [depl name]**: Print out details about a specific deployment.<br>
+**kubectl apply -f [config file name]**: Crate a deployment out of a config file.<br>
+**kubectl delete deployment [depl_name]**: Delete a deployment.<br>
+**kubectl rollout restart deployment [depl_name]**: Update a deploy.<br>
+
+<h3>Services</h3>
+Services provide networking between pods.<br>
+Types of services:<br>
+
+- **Cluster IP**: Set up an easy-to-remember URL to access a pod. Only exposes pods in the cluster.<br>
+- **Node Port**: Makes a pod accessible from outside the cluster. Usually only used for dev purposes.<br>
+- **Load Balancer**: Makes a pod accessible from outside the cluster. This is the right way to expose a pod to the outside world.<br>
+- **External Name**: Redirects an in-cluster request to a CNAME url... don't worry about this one.<br>
+
+<br>
+<h3>Building an alias</h3>
+
+**code ~/.zshrc**: To open the config file.<br>
+**source ~/.zshrc**: To restart the terminal.<br>
