@@ -112,3 +112,10 @@ Types of services:<br>
 
 **code ~/.zshrc**: To open the config file.<br>
 **source ~/.zshrc**: To restart the terminal.<br>
+
+<h3>Change the /etc/hosts</h3>
+For Nginx Ingress we need to set a host, so we have to change the hosts of our computer in order to access to our app and no the given domain in the web.
+Just open the file **code /etc/hosts** and add at the end of the file **127.0.0.1 posts.com**
+
+**code ~/.zshrc**: To open the config file.<br>
+**source ~/.zshrc**: To restart the terminal.<br>
