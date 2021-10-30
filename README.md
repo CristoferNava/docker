@@ -2,13 +2,17 @@
 
 **docker pull**: Get the indicated image from the DockerHub.<br>
 
-**docker run containerName**: Execute the image that contains all the info for the container and with that build the container.<br>
-
 **docker images**: List all the images we have installed in our system.<br>
 
 **docker images | head**: Same as _docker images_ but only show a few lines.<br>
 
-**docker ps**: Show to us the containers that are runing.<br>
+**docker run containerName**: Execute the image that contains all the info for the container and with that build the container.<br>
+
+**docker run -d containerId**: (_-d_ is for detach), run the given container in the background.<br>
+
+**docker run -d --name my-name imageName**: Run the given container in the background with the name that we have set.
+
+**docker ps**: Shows the containers that are runing.<br>
 
 **docker ps -a**: Show the containers that ran recently. Most recent first<br>
 
@@ -22,7 +26,7 @@
 
 **docker stop containerId**: Stops the given container.<br>
 
-**docker run -d containerId**: (_-d_ is for detach), run the given container in the background.<br>
+
 
 <hr>
 <br>
