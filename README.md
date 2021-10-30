@@ -2,7 +2,7 @@
 
 **docker pull**: Get the indicated image from the DockerHub.<br>
 
-**docker run containerName**: Execute the image that contains all the info for the container and with that run the container.<br>
+**docker run containerName**: Execute the image that contains all the info for the container and with that build the container.<br>
 
 **docker images**: List all the images we have installed in our system.<br>
 
