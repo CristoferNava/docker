@@ -6,26 +6,41 @@
 
 **docker images | head**: Same as _docker images_ but only show a few lines.<br>
 
-**docker run containerName**: Execute the image that contains all the info for the container and with that build the container.<br>
+**docker run imageName**: Execute the image that contains all the info for the container and with that build the container.<br>
 
 **docker run -d containerId**: (_-d_ is for detach), run the given container in the background.<br>
 
 **docker run -d --name my-name imageName**: Run the given container in the background with the name that we have set.
 
-**docker ps**: Shows the containers that are runing.<br>
-
-**docker ps -a**: Show the containers that ran recently. Most recent first<br>
-
-**docker start idContainer**: Start a container in the background (don't show the logs). Start will start any stopped containers (with the data)<br>
+**docker run -d --rm -p 8000:80 --name my-name imageName**: Run the given container in the background with the name that we have set, the container is removed when we stop it, the -p maps the port 80 of the Docker container to our port 8000.
 
 **docker logs containerId**: Show the logs of the given container at the current moment and then return the control.<br>
 
 **docker logs -f containerId** Same as _docker logs_ but it stays listening.<br>
 
-**docker exec -it containerId sh**: _exect_ executes a command in a container that is currently running, the _-it_ is for interactive terminal and _sh_ is for shell.<br>
+**docker top containerName** Displays the running processes of a container.<br>
 
-**docker stop containerId**: Stops the given container.<br>
+**docker ps**: Shows the containers that are runing.<br>
 
+**docker ps -a**: Show the containers that ran recently. Most recent first, also show the stopped containers.<br>
+
+**docker exec -it containerId sh**: _exect_ executes a command in a container that is currently running, the _-it_ is for interactive terminal and _sh_ is for shell, also we can use _bash_ instead of shell.<br>
+
+**docker stop containerId**: Stops the given container but not remove it.<br>
+
+**docker rm containerId**: Removes the given container.<br>
+
+**docker start idContainer**: Start a container in the background (don't show the logs). Start will start any stopped containers (with the data)<br>
+
+**docker run -d --rm -p 8000:80 -v /Users/cristofer/Desktop/docker/nginx:/usr/share/nginx/html --name my-nginx nginx**: Using the volume that we specified.<br>
+
+**docker volume ls**: Shows the volumes that we have.<br>
+
+**docker volume create volumeName**: Creates a new volume with the given name.<br>
+
+**docker run -d --rm --mount source=volumeName,target=routeToBeMount imageName**: Mounts a new volume in the container, no all the changes that we make to the target route will be saved in the volume, and not matter if we remove the container, all the data is saved in the volume.<br>
+
+**docker volume rm volumeName**: Removes the given volume.<br>
 
 
 <hr>
@@ -42,11 +57,11 @@
 
     CMD ["command", "argument"] *command that is going to run when we start this container*
 
-**docker build .**: Build the container given a Dockerfile, it returns the numeric ID created for that container.<br>
+**docker build .**: Build the image given a Dockerfile, it returns the numeric ID created for the image.<br>
 
-**docker build -t my-own-name**: Build the container with a giving tag, we can use this tag as an cointainerID equivalent.<br>
+**docker build -t my-own-name:1.0 .**: Build the image with a giving tag.<br>
 
-**docker run -dp 3000:3000 my-container-name**: Run the container using detach and port, exposing the port 3000 (the first one) of the Docker system to the port 3000 (the second one) of the host (our machine).<br>
+**docker run -dp 3000:3000 my-container-name:1.0**: Run the container using detach and port, exposing the port 3000 (the first one) of the Docker system to the port 3000 (the second one) of the host (our machine).<br>
 
 **docker login**: Connect to Docker Hub.<br>
 
