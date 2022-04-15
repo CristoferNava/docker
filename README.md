@@ -1,22 +1,44 @@
+<h1>Important Concepts</h1>
+
+**Container**: A container is lightweight way to package applications including all their dependencies and necessary files while keeping them isolated from other containers in the same system.
+
+**Container image**: A _container_ is run from a _container image_. A container image is a static version of all the files, environment variables, and the default command/program that should be present in a container. Static here means that the container image is not running, it's not being executed, it's only the packaged files and metadata.
+
+**Difference between container and container image**: A container refers to the running instance, the thing that is being executed. A container image refers to all the things needed to build a container instance.
+
 <h1>Basic Commands</h1>
 
+**docker --version**: Get the current version of Docker.<br>
+
+**docker info**: General info about Docker.<br>
+
 **docker pull**: Get the indicated image from the DockerHub.<br>
+
+**docker run --name my_own_name image_name**: Build and run a container with the given name.<br>
+
+**docker run image_name my_own_command**: Build and run the container, overrides the COMMAND of the image.<br>
+
+**docker exec container_id my_command**: In a container that already exists and is running execute a command.<br>
+
+**docker rename current_name new_name**: Change the name of the given container.<br>
+
+**docker rm container_id**: Removes the given container. Instead of the container id we can also use the container name.<br>
+
+**docker container prune**: Removes all the stoped containers.<br>
+
+**docker run -it image_name**: Build and run the container in the interactive mode (for example when running Ubuntu).<br>
 
 **docker images**: List all the images we have installed in our system.<br>
 
 **docker images | head**: Same as _docker images_ but only show a few lines.<br>
 
-**docker run imageName**: Execute the image that contains all the info for the container and with that build the container.<br>
-
-**docker run -d containerId**: (_-d_ is for detach), run the given container in the background.<br>
-
-**docker run -d --name my-name imageName**: Run the given container in the background with the name that we have set.
+**docker run -d image_name**: (_-d_ is for detach), run the given container in the background.<br>
 
 **docker run -d --rm -p 8000:80 --name my-name imageName**: Run the given container in the background with the name that we have set, the container is removed when we stop it, the -p maps the port 80 of the Docker container to our port 8000.
 
 **docker logs containerId**: Show the logs of the given container at the current moment and then return the control.<br>
 
-**docker logs -f containerId** Same as _docker logs_ but it stays listening.<br>
+**docker logs -f containerId** Same as _docker logs_ but stays listening.<br>
 
 **docker top containerName** Displays the running processes of a container.<br>
 
@@ -27,8 +49,6 @@
 **docker exec -it containerId sh**: _exect_ executes a command in a container that is currently running, the _-it_ is for interactive terminal and _sh_ is for shell, also we can use _bash_ instead of shell.<br>
 
 **docker stop containerId**: Stops the given container but not remove it.<br>
-
-**docker rm containerId**: Removes the given container.<br>
 
 **docker start idContainer**: Start a container in the background (don't show the logs). Start will start any stopped containers (with the data)<br>
 
@@ -41,7 +61,6 @@
 **docker run -d --rm --mount source=volumeName,target=routeToBeMount imageName**: Mounts a new volume in the container, no all the changes that we make to the target route will be saved in the volume, and not matter if we remove the container, all the data is saved in the volume.<br>
 
 **docker volume rm volumeName**: Removes the given volume.<br>
-
 
 <hr>
 <br>
