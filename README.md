@@ -28,7 +28,7 @@
 
 **docker run -it image_name**: Build and run the container in the interactive mode (for example when running Ubuntu).<br>
 
-**docker images**: List all the images we have installed in our system.<br>
+**docker images**: List all the images we have installed in our system. We can al use **docker image ls**<br>
 
 **docker images | head**: Same as _docker images_ but only show a few lines.<br>
 
@@ -58,29 +58,17 @@
 
 **docker volume create volumeName**: Creates a new volume with the given name.<br>
 
+**docker run -d --name db --mount src=dbdata,dst=/data/db mongo**: Mounts a volume (dbdata is the name of the volume, /data/db is the path where mongo stores its data).<br>
+
 **docker run -d --rm --mount source=volumeName,target=routeToBeMount imageName**: Mounts a new volume in the container, no all the changes that we make to the target route will be saved in the volume, and not matter if we remove the container, all the data is saved in the volume.<br>
 
 **docker volume rm volumeName**: Removes the given volume.<br>
 
-<hr>
-<br>
-<h1>Building Images</h1>
+**docker cp my_route/file.txt container_name:/route_to_copy/new_file_name.txt**: Copy a file into the indicated container.<br>
 
-    FROM *base image: image from where we're going to build our image*
-
-    WORKDIR /app *where we are going to store the commands of our container*
-
-    COPY . . *copy all the files of the actual directory to the container dir (/app)*
-
-    RUN *compile, build, or whatever the app does*
-
-    CMD ["command", "argument"] *command that is going to run when we start this container*
-
-**docker build .**: Build the image given a Dockerfile, it returns the numeric ID created for the image.<br>
+**docker cp container_name:/route/file_name.txt my_route/new_name_file.txt**: Copy a file from a container to our host machine.<br>
 
 **docker build -t my-own-name:1.0 .**: Build the image with a giving tag.<br>
-
-**docker run -dp 3000:3000 my-container-name:1.0**: Run the container using detach and port, exposing the port 3000 (the first one) of the Docker system to the port 3000 (the second one) of the host (our machine).<br>
 
 **docker login**: Connect to Docker Hub.<br>
 
