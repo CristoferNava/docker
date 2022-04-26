@@ -26,6 +26,10 @@
 
 **docker container prune**: Removes all the stoped containers.<br>
 
+**docker system prune**<br>
+
+**docker rm -f $(docker ps -aq)**: Removes all the containers (q returns all the ids of the containers).<br>
+
 **docker run -it image_name**: Build and run the container in the interactive mode (for example when running Ubuntu).<br>
 
 **docker images**: List all the images we have installed in our system. We can al use **docker image ls**<br>
@@ -52,7 +56,7 @@
 
 **docker start idContainer**: Start a container in the background (don't show the logs). Start will start any stopped containers (with the data)<br>
 
-**docker run -d --rm -p 8000:80 -v /Users/cristofer/Desktop/docker/nginx:/usr/share/nginx/html --name my-nginx nginx**: Using the volume that we specified.<br>
+**docker run -d --rm -p 8000:80 -v /Users/cristofer/Desktop/docker/nginx:/usr/share/nginx/html --name my-nginx nginx**: Using the volume that we specified. Bind mount.<br>
 
 **docker volume ls**: Shows the volumes that we have.<br>
 
@@ -76,14 +80,28 @@
 
 **docker push cristofernava/new-name:v2**: Upload the image to our profile in Docker Hub.<br>
 
+**docker network ls**: Show the networks.<br>
+
+**docker network create my_network_name**: Create a network with the given name.<br>
+
+**docker network create --attachable my_network_name**: Allow others containers to connect to this network.<br>
+
+**docker network connect network_name container_name**: Connects the indicated container to the indicated network.<br>
+
+**docker run -d --name app -p 3000:3000 --env MONGO_URL=mongodb://db:27017/test platziapp**<br>
+
+**docker stast**: Useful stats about containers.<br>
+
 <hr>
 <br>
 <h1>Docker Compose</h1>
-Compose is a tool for defining and runnig multi-container Docker applications. With Compose, you use a YAML file to configure your application's services.<br>
+Compose is a tool for defining and runnig multi-container Docker applications. With Compose, you use a YAML file to configure your application's services. With this we can describe the architecture of our app.<br>
 
 **vim docker-compose.yaml**: Create a new Docker compose file.<br>
 
-**docker-compose up -d**: _up_ up the services in the the .yaml file.
+**docker-compose up -d**: _up_ up the services in the the .yaml file. <br>
+
+**docker-compose down**: Stops the current Docker Compose.<br>
 
 <hr>
 <br>
