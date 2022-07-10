@@ -111,7 +111,7 @@ Compose is a tool for defining and runnig multi-container Docker applications. W
 
 **Node**: A virtual machine that will run our containers.<br>
 
-**Pod**: More or less a running container. Technically, a pod can run multiple containers (we don't do this).<br>
+**Pod**: More or less a running container. Technically, a pod can run multiple containers (we don't do this). All the containers of the same pod share the same network spacename.<br>
 
 **Deployment**: Monitors a set of pods, make sure they are running and restarts them if they crash.<br>
 
